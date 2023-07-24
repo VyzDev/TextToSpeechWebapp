@@ -1,6 +1,17 @@
 import streamlit as st
 from gtts import gTTS
 
+languages = {
+    "English": "en",
+    "Spanish": "es",
+    "French": "fr",
+    "Russian": "ru",
+    "German": "de",
+    "Japanese": "ja",
+    "Chinese": "zh",
+    "Vietnamese": "vi",
+}
+
 st.set_page_config(page_title="Text to Speech", page_icon=":speech_balloon:")
 
 with st.container():
@@ -13,24 +24,7 @@ with st.container():
     if downloadButton:
         with st.spinner("Working..."):
             if len(textInput) > 0:
-                if outputLanguageSelect == "English":
-                    languageCode = "en"
-                elif outputLanguageSelect == "Spanish":
-                    languageCode = "es"
-                elif outputLanguageSelect == "French":
-                    languageCode = "fr"
-                elif outputLanguageSelect == "Russian":
-                    languageCode = "ru"
-                elif outputLanguageSelect == "German":
-                    languageCode = "de"
-                elif outputLanguageSelect == "Japanese":
-                    languageCode = "ja"
-                elif outputLanguageSelect == "Chinese":
-                    languageCode = "zh"
-                elif outputLanguageSelect == "Vietnamese":
-                    languageCode = "vi"
-
-                myobj = gTTS(text=textInput, lang=languageCode, slow=False)
+                myobj = gTTS(text=textInput, lang=languages[outputLanguageSelect], slow=False)
                 myobj.save("ttsFile.mp3")
                 #https://docs.streamlit.io/library/api-reference/media/st.audio
                 audio_file = open('ttsFile.mp3', 'rb')
