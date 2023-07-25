@@ -16,7 +16,6 @@ st.set_page_config(page_title="Text to Speech", page_icon=":speech_balloon:")
 
 with st.container():
     ttsTitleText = st.title("Text to Speech!")
-    st.caption("Created by [@VyzDev](https://twitter.com/VyzDev)")
     textInput = st.text_area("Input text here!")
     outputLanguageSelect = st.selectbox("Output Accent", ["English", "Spanish", "French", "Russian", "German", "Japanese", "Chinese", "Vietnamese"])
     downloadButton = st.button("Speechify!")
